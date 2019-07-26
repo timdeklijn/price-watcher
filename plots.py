@@ -8,14 +8,47 @@ from pandas.plotting import register_matplotlib_converters
 register_matplotlib_converters()
 
 class Plot():
+    """
+    Base class used to scrape product prices from webpages. Will be
+    inherited by webshop specific scraper classes
+
+    Attributes
+    ----------
+        df: pandas dataframe
+            contains scraped + historical data
+        plot_file : string
+            file name + location of plot to create
+
+    Methods
+    -------
+        prep_data()
+            Transform data to be plotted
+        create_plot()
+            plot the data
+    """
 
     def __init__(self, df):
+        """
+        Parameters
+        ----------
+            df: pandas dataframe
+                contains scraped + historical data
+        """
         self.df = df
         self.prep_data()
-        self.plot_file = "bucket/tst_plot.png"
+        self.plot_file = "bucket/tmp.png"
         self.create_plot()
 
     def prep_data(self):
+        """
+        Modify dataframe containing all scraped data to
+        a format that can be plotted
+
+        Parameters
+        ----------
+            None
+        """
+
         self.plot_df = self.df.drop("store", axis=1)
         self.plot_df = self.plot_df.pivot(index="date", columns="name")
         self.plot_df.columns = self.plot_df.columns.droplevel()
@@ -24,6 +57,9 @@ class Plot():
         self.plot_df.index = range(len(self.plot_df))
 
     def create_plot(self):
+        """
+        Create a plot of the transformed data and save to file
+        """
 
         plt.ioff()
         fig = plt.figure()
