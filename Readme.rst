@@ -21,6 +21,7 @@ Github page
 TODO
 ----
 
+#. [x] Convert to package
 #. [ ] Finish email module
     #. [ ] Create email
     #. [ ] Finish code
