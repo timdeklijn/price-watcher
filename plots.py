@@ -59,6 +59,10 @@ class Plot():
     def create_plot(self):
         """
         Create a plot of the transformed data and save to file
+
+        Parameters
+        ----------
+            None
         """
 
         plt.ioff()
