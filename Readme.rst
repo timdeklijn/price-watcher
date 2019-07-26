@@ -9,9 +9,9 @@ Scrape the webpage given in the config to find the price of the product. For now
 Usage
 -----
 
-`python main.py`
+python main.py
 
 Github page
 -----------
 
-
+`github <https://github.com/timdeklijn/price-watcher>`_

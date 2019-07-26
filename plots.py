@@ -33,6 +33,7 @@ class Plot():
         plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
         x_tick_labels = self.plot_df.date.map(lambda t: t.strftime('%Y-%m-%d'))
         plt.xticks(self.plot_df.date, x_tick_labels, rotation='vertical')
+        plt.title("Prices of products over time")
         plt.xlabel("Date")
         plt.ylabel("Price (EUR)")
         fig.savefig(self.plot_file, bbox_inches='tight')
