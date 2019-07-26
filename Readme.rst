@@ -15,3 +15,13 @@ Github page
 -----------
 
 `github <https://github.com/timdeklijn/price-watcher>`_
+
+TODO
+----
+
+- [ ] Finish email module
+* [ ] Create email
+* [ ] Finish code
+- [ ] Dockerize the code
+- [ ] Connect to bucket on cloud platform
+- [ ] Finish documentation
