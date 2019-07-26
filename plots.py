@@ -12,7 +12,7 @@ class Plot():
     def __init__(self, df):
         self.df = df
         self.prep_data()
-        self.plot_file = "tst_data/tst_plot.png"
+        self.plot_file = "bucket/tst_plot.png"
         self.create_plot()
 
     def prep_data(self):

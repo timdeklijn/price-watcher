@@ -27,7 +27,7 @@ def read_config():
         dict
             Config in dict form
     """
-    config_location = "tst_data/config.json"
+    config_location = "bucket/config.json"
     with open(config_location, "r") as f:
         config = json.load(f)
     return config

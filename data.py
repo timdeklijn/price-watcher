@@ -39,7 +39,7 @@ class Data():
         """
 
         self.new_data = new_data
-        self.datafile = "tst_data/price_data.csv"
+        self.datafile = "bucket/price_data.csv"
         self.df = None
         self.prep_new_data()
         self.load_data()
