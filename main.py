@@ -11,6 +11,7 @@ import json
 
 from psn_scraper import PSNScraper
 from data import Data
+from plots import Plot
 
 def read_config():
     """
@@ -62,7 +63,9 @@ def get_price_data(config):
 def main():
     config = read_config()
     new_data = get_price_data(config)
-    d = Data(new_data)
+    df = Data(new_data).df
+    p = Plot(df)
+    
 
 if __name__ == "__main__":
     main()

@@ -46,7 +46,6 @@ class Data():
         self.concat_dfs()
         self.get_unique_rows()
         self.write_data()
-        print(self.df)
 
     def load_data(self):
         """
