@@ -9,6 +9,8 @@ Scrape the webpage given in the config to find the price of the product. For now
 Usage
 -----
 
+Change this to work like a python package
+
     python main.py
 
 Github page
@@ -20,8 +22,8 @@ TODO
 ----
 
 - [ ] Finish email module
-* [ ] Create email
-* [ ] Finish code
+    - [ ] Create email
+    - [ ] Finish code
 - [ ] Dockerize the code
 - [ ] Connect to bucket on cloud platform
 - [ ] Finish documentation
