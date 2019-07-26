@@ -4,7 +4,7 @@ price-watcher
 Short description
 -----------------
 
-Scrape the webpage given in the config to find the price of the product. For now this code works for the Playstation network.
+Scrape the webpage given in the config to find the price of the product. For now this code works for the Playstation network. And then send the resulting plot to the user's email adress.
 
 Usage
 -----
