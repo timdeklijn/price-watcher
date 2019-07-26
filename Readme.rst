@@ -21,11 +21,11 @@ Github page
 TODO
 ----
 
-- [ ] Finish email module
-    - [ ] Create email
-    - [ ] Finish code
-- [ ] Dockerize the code
-    - [ ] Install and test Docker
-    - [ ] Create docker file and test
-- [ ] Connect to bucket on cloud platform
-- [ ] Finish documentation
+# [ ] Finish email module
+    # [ ] Create email
+    # [ ] Finish code
+# [ ] Dockerize the code
+    # [ ] Install and test Docker
+    # [ ] Create docker file and test
+# [ ] Connect to bucket on cloud platform
+# [ ] Finish documentation
