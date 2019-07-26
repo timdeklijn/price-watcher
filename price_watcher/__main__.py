@@ -9,9 +9,9 @@ __author__ = "Tim de Klijn"
 
 import json
 
-from psn_scraper import PSNScraper
-from data import Data
-from plots import Plot
+from price_watcher.psn_scraper import PSNScraper
+from price_watcher.data import Data
+from price_watcher.plots import Plot
 
 def read_config():
     """

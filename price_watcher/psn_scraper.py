@@ -1,6 +1,7 @@
-from price_scraper import PriceScraper
 import requests
 from bs4 import BeautifulSoup
+
+from price_watcher.price_scraper import PriceScraper
 
 class PSNScraper(PriceScraper):
     """
