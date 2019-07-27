@@ -22,11 +22,11 @@ TODO
 ----
 
 #. [x] Convert to package
-#. [ ] Finish email module
-    #. [ ] Create email
-    #. [ ] Finish code
+#. [x] Finish email module
+    #. [x] Create email
+    #. [x] Finish code
 #. [ ] Dockerize the code
-    #. [ ] Install and test Docker
+    #. [x] Install and test Docker
     #. [ ] Create docker file and test
 #. [ ] Connect to bucket on cloud platform
 #. [ ] Finish documentation
