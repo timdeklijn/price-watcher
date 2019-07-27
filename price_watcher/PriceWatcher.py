@@ -138,21 +138,27 @@ class PriceWatcher():
         fig.savefig(self.plot_file, bbox_inches='tight')
 
     def send_mail(self):
-        
+        """
+        Send an email with the plot as attachement
+        """
+
+        # Message header
         subject = f"[{datetime.datetime.now().strftime('%Y-%m-%d')}] Pricewatch"
         text = "Info on averages"
 
+        # Construct email
         msg = MIMEMultipart()
         msg['From'] = self.email_from
         msg['To'] = self.email_to
         msg['Subject'] = subject
-
         msg.attach(MIMEText(text))
 
+        # Add attachement
         img_data = open(self.plot_file, 'rb').read()
         image = MIMEImage(img_data, name=os.path.basename(self.plot_file))
         msg.attach(image)
 
+        # Send email to server
         smtp = smtplib.SMTP(host="smtp.gmail.com", port= 587) 
         smtp.starttls()
         smtp.login(self.username, self.password)
