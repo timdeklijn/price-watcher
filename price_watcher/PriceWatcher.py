@@ -36,12 +36,12 @@ class PriceWatcher():
         self.new_data = new_data
         self.data_file = "bucket/price_data.csv"
         self.plot_file = "bucket/tmp.png"
+        self.email_to = config["target_email"]
+        self.email_from = config["email_from"]
+        self.username = config["user_from"]
+        self.password = config["password"]
         self.df = None
         self.plot_df = None
-        self.email_to = "timdeklijn@gmail.com"
-        self.email_from = "tim.sends.info@gmail.com"
-        self.username = "tim.sends.info"
-        self.password = "test1234!"
         self.run()
 
     def run(self):

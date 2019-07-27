@@ -48,7 +48,6 @@ def get_price_data(config):
     return price_dict
 
 def main():
-    print("Price watcher")
     config = read_config()
     PriceWatcher(get_price_data(config), config)
 
