@@ -5,3 +5,4 @@ tst_data/
 .vscode
 *.png
 *.csv
+*/config.json
