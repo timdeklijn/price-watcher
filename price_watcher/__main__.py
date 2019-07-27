@@ -10,22 +10,14 @@ __author__ = "Tim de Klijn"
 import json
 
 from price_watcher.psn_scraper import PSNScraper
-from price_watcher.data import Data
-from price_watcher.plots import Plot
+from price_watcher.PriceWatcher import PriceWatcher
 
 def read_config():
     """
     Read the config file and return a dictionairy with
     the configuration.
 
-    Parameters
-    ----------
-        None
-
-    Returns
-    -------
-        dict
-            Config in dict form
+        :returns: Config in dict form
     """
     config_location = "bucket/config.json"
     with open(config_location, "r") as f:
@@ -38,19 +30,14 @@ def get_price_data(config):
     and scrape the price of the product. Place in a list and
     return the list.
 
-    Parameters
-    ----------
-        config : dict
-            dictionairy containing info on products to look for 
-            the price of
-
-    Returns
-    -------
-        list
-            List with found prices, dates and product name in 
+        :param config: dictionairy containing info on products to look
+            for the price of
+        :type config: dict
+        :returns: List with found prices, dates and product name in
             a dictionairy.
-            
+        :rtype: list(dict)
     """
+
     price_dict = []
     for product in config["products"]:
         if product["store"] == "psn":
@@ -61,11 +48,9 @@ def get_price_data(config):
     return price_dict
 
 def main():
+    print("Price watcher")
     config = read_config()
-    new_data = get_price_data(config)
-    df = Data(new_data).df
-    p = Plot(df)
-    
+    PriceWatcher(get_price_data(config))
 
 if __name__ == "__main__":
     main()
