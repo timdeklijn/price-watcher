@@ -7,6 +7,14 @@ from pandas.plotting import register_matplotlib_converters
 from datetime import datetime
 import numpy as np
 import os
+import datetime
+
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
+from os.path import basename
 
 matplotlib.use('Agg')
 plt.style.use('ggplot')
@@ -17,9 +25,12 @@ class PriceWatcher():
     Handles the data, plotting and sending of the plots
     """
 
-    def __init__(self, new_data):
+    def __init__(self, new_data, config):
         """
-            :param new_data: pandas dataframe with scraped price data
+            :param new_data: scraped price data
+            :type new_data: pandas dataframe
+            :param config: run config
+            :type config: dict
         """
 
         self.new_data = new_data
@@ -27,6 +38,10 @@ class PriceWatcher():
         self.plot_file = "bucket/tmp.png"
         self.df = None
         self.plot_df = None
+        self.email_to = "timdeklijn@gmail.com"
+        self.email_from = "tim.sends.info@gmail.com"
+        self.username = "tim.sends.info"
+        self.password = "test1234!"
         self.run()
 
     def run(self):
@@ -41,6 +56,7 @@ class PriceWatcher():
         self.write_data()
         self.prep_data()
         self.create_plot()
+        self.send_mail()
 
     def load_data(self):
         """
@@ -108,7 +124,6 @@ class PriceWatcher():
         Create a plot of the transformed data and save to file
         """
 
-        print(self.plot_df)
         plt.ioff()
         fig = plt.figure()
         for n in self.plot_df.columns:
@@ -121,3 +136,25 @@ class PriceWatcher():
         plt.xlabel("Date")
         plt.ylabel("Price (EUR)")
         fig.savefig(self.plot_file, bbox_inches='tight')
+
+    def send_mail(self):
+        
+        subject = f"[{datetime.datetime.now().strftime('%Y-%m-%d')}] Pricewatch"
+        text = "Info on averages"
+
+        msg = MIMEMultipart()
+        msg['From'] = self.email_from
+        msg['To'] = self.email_to
+        msg['Subject'] = subject
+
+        msg.attach(MIMEText(text))
+
+        img_data = open(self.plot_file, 'rb').read()
+        image = MIMEImage(img_data, name=os.path.basename(self.plot_file))
+        msg.attach(image)
+
+        smtp = smtplib.SMTP(host="smtp.gmail.com", port= 587) 
+        smtp.starttls()
+        smtp.login(self.username, self.password)
+        smtp.sendmail(self.email_from, self.email_to, msg.as_string())
+        smtp.close()

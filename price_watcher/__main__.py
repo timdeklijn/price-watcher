@@ -50,7 +50,7 @@ def get_price_data(config):
 def main():
     print("Price watcher")
     config = read_config()
-    PriceWatcher(get_price_data(config))
+    PriceWatcher(get_price_data(config), config)
 
 if __name__ == "__main__":
     main()
