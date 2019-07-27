@@ -4,3 +4,4 @@ tst_data/
 *.pyc
 .vscode
 *.png
+*.csv
