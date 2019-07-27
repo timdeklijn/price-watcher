@@ -11,7 +11,7 @@ Usage
 
 Change this to work like a python package
 
-    python main.py
+    python -m main.py
 
 Github page
 -----------
